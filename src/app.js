@@ -25,10 +25,10 @@ window.addEventListener('load', () => {
       const countryNameText = document.createTextNode(country.name.common);
       const countryPopulation = document.createElement('p');
       const countryPopulationText = document.createTextNode(`Has a population of ${country.population} people`);
-      imageFlag.setAttribute('class', 'country-flag');
-      imageFlag.setAttribute('src', country.flags.svg);
-      imageFlag.setAttribute('alt', country.name.common);
-      imageFlag.setAttribute('title', country.name.common);
+      imageFlag.setAttribute('class', 'country-flag'); // Or classList.add();
+      imageFlag.setAttribute('src', country.flags.svg); // imageFlag.src = '';
+      imageFlag.setAttribute('alt', country.name.common); // imageFlag.alt = '';
+      imageFlag.setAttribute('title', country.name.common); // imageFlag.title = '';
       listItem.appendChild(imageFlag);
       countryName.setAttribute('class', 'country-name');
       listItem.appendChild(countryName);
