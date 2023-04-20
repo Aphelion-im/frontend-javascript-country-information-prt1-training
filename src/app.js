@@ -5,7 +5,9 @@ window.addEventListener('load', () => {
 
   async function fetchWorldData() {
     try {
-      const results = await axios.get('https://restcountries.com/v3.1/all'); // This version, v3.1, of the API seems stable now
+      const results = await axios.get(
+        'https://restcountries.com/v3.1/all?fields=flags,name,currencies,population,region'
+      ); // This version, v3.1, of the API seems stable now
       const countries = results.data;
       countries.sort((a, b) => a.population - b.population); // Keeps the original array intact and sorts data
 
@@ -17,14 +19,17 @@ window.addEventListener('load', () => {
 
   // Could have done it with innerHTML.
   function createCards(countries) {
-    countries.forEach((country) => { // Or with map(). I chose forEach().
+    countries.forEach((country) => {
+      // Or with map(). I chose forEach().
       const region = country.region;
       const listItem = document.createElement('li');
       const imageFlag = document.createElement('img');
       const countryName = document.createElement('span');
       const countryNameText = document.createTextNode(country.name.common);
       const countryPopulation = document.createElement('p');
-      const countryPopulationText = document.createTextNode(`Has a population of ${country.population} people`);
+      const countryPopulationText = document.createTextNode(
+        `Has a population of ${country.population} people`
+      );
       imageFlag.setAttribute('class', 'country-flag'); // Or classList.add();
       imageFlag.setAttribute('src', country.flags.svg); // imageFlag.src = '';
       imageFlag.setAttribute('alt', country.name.common); // imageFlag.alt = '';
